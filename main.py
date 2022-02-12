@@ -12,9 +12,12 @@ scholarships = soup.find_all("div", class_="card-warp")
 
 def extractDetails(n):
     name = scholarships[n].a.text
+    description = scholarships[n].find("div", class_="card-bio")
     details = scholarships[n].ul.text.strip()
     state = scholarships[n].find("span", class_="card-deal-title").text
-    print(name, "\nState: ", state, "\n")
+    print(name)
+    print("Description : \n %s \n" % description)
+    print("\nState: ", state, "\n")
 
 
 def filter_by_amount(a):
@@ -41,8 +44,6 @@ while True:
         filter_by_amount(type)
         print("\n")
 
-
-# while True:
-#    print ("Choose by number")
-#    num = int(input()) - 1
-#    extractDetails(num)
+    print("Choose by number")
+    num = int(input()) - 1
+    extractDetails(num)
