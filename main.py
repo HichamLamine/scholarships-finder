@@ -8,9 +8,6 @@ htmlText = requests.get(
 soup = BeautifulSoup(htmlText, "lxml")
 scholarships = soup.find_all("div", class_="card-warp")
 # print("available scholarships \n")
-for index, scholarship in enumerate(scholarships):
-    name = scholarship.a.text
-#    print(index + 1, ".", name)
 
 
 def extractDetails(n):
