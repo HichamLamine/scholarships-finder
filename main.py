@@ -6,16 +6,16 @@ htmlText = requests.get(
     "https://www.scholarshipsads.com/category/tags/morocco/https://www.scholarshipsads.com/category/tags/morocco/"
 ).text
 soup = BeautifulSoup(htmlText, "lxml")
-scholarships = soup.find_all("div", class_="card-warp")
+scholarships = soup.find_all("div", class_="scholarship-card")
 # print("available scholarships \n")
 
 
 def extractDetails(n):
     name = scholarships[n].a.text
-    description = scholarships[n].find("div", class_="card-bio")
+    description = scholarships[n].find("div", class_="card-bio").text
     details = scholarships[n].ul.text.strip()
     state = scholarships[n].find("span", class_="card-deal-title").text
-    print(name)
+    print("\n", name, "\n")
     print("Description : \n %s \n" % description)
     print("\nState: ", state, "\n")
 
